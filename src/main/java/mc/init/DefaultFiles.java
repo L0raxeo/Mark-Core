@@ -5,7 +5,7 @@ import mc.utils.FileLoader;
 import java.io.File;
 import java.io.IOException;
 
-public class FileInit
+public class DefaultFiles
 {
 
     public static void init() throws IOException
