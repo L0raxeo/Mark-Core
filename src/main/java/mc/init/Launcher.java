@@ -1,4 +1,6 @@
-package mc;
+package mc.init;
+
+import mc.MarkCore;
 
 public class Launcher
 {
