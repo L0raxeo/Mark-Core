@@ -2,6 +2,7 @@ package mc;
 
 import mc.debug.DebugManager;
 import mc.init.DefaultFiles;
+import mc.input.CustomResponseManager;
 import mc.input.InputHandler;
 import mc.nuclei.NucleusManager;
 import mc.utils.FileLoader;
@@ -36,6 +37,7 @@ public class MarkCore
     public void init() throws IOException
     {
         DebugManager.init();
+        CustomResponseManager.init();
     }
 
     public void postInit() throws IOException
