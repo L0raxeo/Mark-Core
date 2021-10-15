@@ -15,7 +15,7 @@ public class TerminalManager
         }
         catch (IOException e)
         {
-            System.out.println("[Markus]: ERROR - unable to run command. This could be a problem.");
+            System.out.println("[Markus]: ERROR - unable to run command. This could be a problem. (Terminal Manager)");
         }
     }
 
