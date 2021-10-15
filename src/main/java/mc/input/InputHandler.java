@@ -1,5 +1,9 @@
 package mc.input;
 
+import mc.debug.DebugManager;
+import mc.nuclei.NucleusManager;
+import mc.utils.Utils;
+
 import java.util.Scanner;
 
 public class InputHandler
@@ -19,11 +23,31 @@ public class InputHandler
     /**
      * Determines how M.A.R.K. will use/handle the input.
      *
-     * @param input is the user input.
+     * @param rawInput is the user input.
      */
-    private static void handleInput(String input)
+    private static void handleInput(String rawInput)
     {
+        // Used to make sure input isn't empty
+        char[] splitInput = Utils.getStringAsCharArray(rawInput);
 
+        if (rawInput.contains(DebugManager.debugCommand))
+        {
+            DebugManager.checkCommands(rawInput);
+        }
+        else if (CustomResponseManager.isCustomResponse(rawInput))
+        {
+            System.out.println("[Mark]: INFO - invoked custom response");
+        }
+        else if (splitInput.length == 0)
+        {
+            System.out.println("[Mark]: Please stop pressing return/enter");
+        }
+        else
+        {
+            NucleusManager.triggerNucleus(rawInput);
+        }
+
+        listen();
     }
 
 }

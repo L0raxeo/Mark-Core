@@ -39,7 +39,7 @@ public class DebugManager
         try
         {
             if (argument.contains("debug_toggle"))
-                Commands.toggleDebugMode();
+                DebugCommands.toggleDebugMode();
         }
         catch (IOException e)
         {

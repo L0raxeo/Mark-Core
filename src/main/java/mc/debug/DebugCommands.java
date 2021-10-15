@@ -4,7 +4,7 @@ import mc.utils.FileLoader;
 
 import java.io.IOException;
 
-public class Commands
+public class DebugCommands
 {
 
     /**
