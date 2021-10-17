@@ -49,7 +49,7 @@ public class MarkCore
     public void init() throws IOException
     {
         DebugManager.init();
-        CustomResponseManager.init();
+        CustomResponseManager.register();
     }
 
     /**

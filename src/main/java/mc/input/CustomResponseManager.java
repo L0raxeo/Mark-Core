@@ -21,7 +21,7 @@ public class CustomResponseManager
     /**
      * Registers/initialization all the custom responses loaded in from customResponses.txt
      */
-    public static void init()
+    public static void register()
     {
         ArrayList<String> customResponsesRaw = null;
 
