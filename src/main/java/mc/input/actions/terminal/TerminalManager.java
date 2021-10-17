@@ -7,7 +7,11 @@ import java.io.IOException;
 public class TerminalManager
 {
 
-    public static void performCommand(Action action)
+    /**
+     * Executes Command
+     * @param action passed through to the function that returns the command associated with it
+     */
+    public static void queueCommand(Action action)
     {
         try
         {

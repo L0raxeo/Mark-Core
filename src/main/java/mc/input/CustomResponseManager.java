@@ -11,8 +11,16 @@ import java.util.HashMap;
 public class CustomResponseManager
 {
 
+    /**
+     * Map of all custom responses:
+     * - String 1: stimulus - string that triggers the response/action
+     * - String 2: result - either an action or a string that is triggered by the stimulus
+     */
     private static final HashMap<String, String> customResponses = new HashMap<>();
 
+    /**
+     * Registers/initialization all the custom responses loaded in from customResponses.txt
+     */
     public static void init()
     {
         ArrayList<String> customResponsesRaw = null;
@@ -34,6 +42,11 @@ public class CustomResponseManager
         }
     }
 
+    /**
+     * Checks if input is a custom response
+     * @param stimulus is the potential stimulus
+     * @return whether input/potential stimulus is custom response
+     */
     public static boolean isCustomResponse(String stimulus)
     {
         String customResponse = getCustomResponse(stimulus);
@@ -43,7 +56,7 @@ public class CustomResponseManager
             // Checks whether the custom response is an action instead of a verbal response
             if (customResponse.contains(":[") && customResponse.contains("]:"))
             {
-                ActionHandler.performAction(customResponse, stimulus);
+                ActionHandler.queueAction(customResponse, stimulus);
                 return true;
             }
 
