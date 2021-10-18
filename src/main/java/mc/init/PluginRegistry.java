@@ -3,7 +3,7 @@ package mc.init;
 /**
  * Initialization of external plugins
  */
-public class ExternalPlugins
+public class PluginRegistry
 {
 
     /**
