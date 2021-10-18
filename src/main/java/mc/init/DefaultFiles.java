@@ -8,6 +8,10 @@ import java.io.IOException;
 public class DefaultFiles
 {
 
+    /**
+     * Initializes prefab files
+     * @throws IOException traces to MarkCore initialization sequence
+     */
     public static void init() throws IOException
     {
         if (!new File("lastSpoken.txt").exists())

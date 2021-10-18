@@ -19,6 +19,12 @@ public class FileLoader
         return br.readLine();
     }
 
+    /**
+     * Reads each line in a text file
+     * @param path of the file
+     * @return all lines of the text file (in form of array list), separated into different indexes in the array list
+     * @throws IOException traced back to initialization method in Mark Core
+     */
     public static ArrayList<String> readAllLinesFromFile(String path) throws IOException
     {
         BufferedReader br = new BufferedReader(new FileReader(path));
