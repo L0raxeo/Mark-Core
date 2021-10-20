@@ -2,6 +2,7 @@ package mc;
 
 import mc.debug.DebugManager;
 import mc.init.DefaultFiles;
+import mc.init.PluginRegistry;
 import mc.input.CustomResponseManager;
 import mc.input.InputHandler;
 import mc.nuclei.NucleusManager;
@@ -40,6 +41,7 @@ public class MarkCore
     public void preInit() throws IOException
     {
         DefaultFiles.init();
+        PluginRegistry.register();
     }
 
     /**
