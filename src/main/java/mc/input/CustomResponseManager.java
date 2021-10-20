@@ -63,7 +63,7 @@ public class CustomResponseManager
             if (DebugManager.active)
                 System.out.println("[Debug]: " + "[ " + customResponse + " ] - Custom Response: " + "[" + stimulus + "]");
             else
-                System.out.println("[Markus]: " + customResponse);
+                System.out.println("[Mark]: " + customResponse);
         }
 
         // returns true if it is a custom response and false if it isn't

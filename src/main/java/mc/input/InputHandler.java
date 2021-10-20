@@ -37,9 +37,9 @@ public class InputHandler
         {
             DebugManager.checkCommands(rawInput);
         }
-        else if (CustomResponseManager.isCustomResponse(rawInput))
+        else if (CustomResponseManager.isCustomResponse(rawInput) && DebugManager.active)
         {
-            System.out.println("[Mark]: INFO - invoked custom response");
+            System.out.println("[Debug]: INFO - invoked custom response");
         }
         else if (splitInput.length == 0)
         {
