@@ -52,6 +52,7 @@ public class MarkCore
     {
         DebugManager.init();
         CustomResponseManager.register();
+        PluginRegistry.init();
     }
 
     /**
