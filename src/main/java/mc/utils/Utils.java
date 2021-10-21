@@ -7,7 +7,17 @@ import java.util.*;
 /**
  * Utils is a general utilities class. Methods within the Utils class is used for general algorithmic data manipulation.
  * This includes conversion algorithms, sorting algorithms... etc.
+ *
+ * @author Lorcan Andrew Cheng
  */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class Utils
 {
 

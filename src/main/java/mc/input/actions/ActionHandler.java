@@ -2,6 +2,11 @@ package mc.input.actions;
 
 import mc.input.actions.terminal.TerminalManager;
 
+/**
+ * Manages {@link Action}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
 public class ActionHandler
 {
 

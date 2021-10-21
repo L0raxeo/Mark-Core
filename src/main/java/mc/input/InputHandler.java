@@ -3,9 +3,30 @@ package mc.input;
 import mc.debug.DebugManager;
 import mc.nuclei.NucleusManager;
 import mc.utils.Utils;
+import mc.utils.VersionInfo;
 
 import java.util.Scanner;
 
+/**
+ * Handles all input, and decides how
+ * the input will be manipulated, or
+ * what type of process it triggers.
+ *
+ * This temporarily includes the input
+ * system. However, the input system
+ * will be separated from the input
+ * handler in future versions.
+ *
+ * @author Lorcan A. Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class InputHandler
 {
 

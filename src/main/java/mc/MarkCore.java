@@ -1,16 +1,31 @@
 package mc;
 
 import mc.debug.DebugManager;
-import mc.init.DefaultFiles;
+import mc.init.IOFileRegistry;
 import mc.init.PluginRegistry;
 import mc.input.CustomResponseManager;
 import mc.input.InputHandler;
 import mc.nuclei.NucleusManager;
 import mc.plugins.PluginManager;
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 
+/**
+ * The base of all Mark-Core games. This class is the
+ * initial starting point of the M.A.R.K.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class MarkCore
 {
 
@@ -19,6 +34,8 @@ public class MarkCore
      */
     public void wake()
     {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::exitProgram));
+
         try
         {
             preInit();
@@ -42,9 +59,7 @@ public class MarkCore
      */
     public void preInit() throws IOException
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(this::exitProgram));
-
-        DefaultFiles.init();
+        IOFileRegistry.init();
         PluginRegistry.register();
     }
 
@@ -68,9 +83,15 @@ public class MarkCore
         NucleusManager.lastNucleus = NucleusManager.getNucleus(FileLoader.readFile("lastSpoken.txt"));
     }
 
+    /**
+     * Exits and destroys all currently running plugins
+     */
     private void exitProgram()
     {
-
+        for (Process p : PluginManager.allPlugins.values())
+        {
+            p.destroy();
+        }
     }
 
 }

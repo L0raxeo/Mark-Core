@@ -1,9 +1,24 @@
 package mc.input.actions.terminal;
 
 import mc.input.actions.Action;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 
+/**
+ * Manages terminal/cmd commands {@link TerminalCommands}, which
+ * are versions of {@link Action}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class TerminalManager
 {
 

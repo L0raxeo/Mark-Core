@@ -1,5 +1,24 @@
 package mc.paths;
 
+import mc.utils.VersionInfo;
+
+/**
+ * Path represents an individual word.
+ * These paths are built on neurons
+ * which represent individual characters.
+ *
+ * Handled by {@link PathManager}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class Path
 {
 

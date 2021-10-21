@@ -1,11 +1,26 @@
 package mc.init;
 
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.File;
 import java.io.IOException;
 
-public class DefaultFiles
+/**
+ * Initialization of all default files,
+ * not including plugins.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
+public class IOFileRegistry
 {
 
     /**

@@ -1,7 +1,23 @@
 package mc.input.actions.terminal;
 
 import mc.input.actions.Action;
+import mc.utils.VersionInfo;
 
+/**
+ * Container for all terminal commands,
+ * determined by the info of {@link Action}
+ * specified in parameters.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class TerminalCommands
 {
 

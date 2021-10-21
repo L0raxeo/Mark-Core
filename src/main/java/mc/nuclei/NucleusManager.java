@@ -4,10 +4,24 @@ import mc.debug.DebugManager;
 import mc.paths.Path;
 import mc.paths.PathManager;
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Manages all nuclei {@link Nucleus} in M.A.R.K.'s core neural network.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class NucleusManager
 {
 

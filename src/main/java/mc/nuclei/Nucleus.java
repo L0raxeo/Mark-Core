@@ -3,9 +3,27 @@ package mc.nuclei;
 import mc.debug.DebugManager;
 import mc.paths.Path;
 import mc.utils.Utils;
+import mc.utils.VersionInfo;
 
 import java.util.HashMap;
 
+/**
+ * Nucleus is the collection of paths to form a thought.
+ * These nuclei can be used to trigger other nuclei,
+ * simulating the process of thinking.
+ *
+ * Handled by {@link NucleusManager}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class Nucleus
 {
 

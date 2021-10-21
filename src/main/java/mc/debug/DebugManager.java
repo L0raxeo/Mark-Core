@@ -1,9 +1,27 @@
 package mc.debug;
 
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 
+/**
+ * Manages debug mode, and all
+ * actions associated with it.
+ *
+ * Debug commands handled separately
+ * in {@link DebugCommands}
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class DebugManager
 {
 

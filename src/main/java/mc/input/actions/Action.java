@@ -1,5 +1,15 @@
 package mc.input.actions;
 
+/**
+ * An Action represents a response
+ * triggered by the stimuli (input),
+ * that doesn't take form in a verbal
+ * response.
+ *
+ * Handled by {@link ActionHandler}
+ *
+ * @author Lorcan A. Cheng
+ */
 public class Action
 {
 

@@ -3,6 +3,21 @@ package mc.utils;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * File loader used to load IO files.
+ * These files do not include any processes
+ * such as JAR files (or plugins).
+ *
+ * @author Lorcan A. Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class FileLoader
 {
 

@@ -2,9 +2,23 @@ package mc.paths;
 
 import mc.debug.DebugManager;
 import mc.utils.Utils;
+import mc.utils.VersionInfo;
 
 import java.util.ArrayList;
 
+/**
+ * Manages paths in the M.A.R.K.'s core neural network
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class PathManager
 {
 

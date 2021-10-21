@@ -3,11 +3,29 @@ package mc.input;
 import mc.debug.DebugManager;
 import mc.input.actions.ActionHandler;
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Handles input, and triggers a custom
+ * response depending on the stimuli (input).
+ *
+ * One of the paths that {@link InputHandler}
+ * can choose.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class CustomResponseManager
 {
 

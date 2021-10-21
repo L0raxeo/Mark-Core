@@ -1,9 +1,23 @@
 package mc.debug;
 
 import mc.utils.FileLoader;
+import mc.utils.VersionInfo;
 
 import java.io.IOException;
 
+/**
+ * Handles debug commands/input.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "1.0",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class DebugCommands
 {
 
