@@ -1,9 +1,9 @@
-package mc.input;
+package com.mark.core.input;
 
-import mc.debug.DebugManager;
-import mc.nuclei.NucleusManager;
-import mc.utils.Utils;
-import mc.utils.VersionInfo;
+import com.mark.core.nuclei.NucleusManager;
+import com.mark.core.utils.Utils;
+import com.mark.core.debug.DebugManager;
+import com.mark.core.utils.VersionInfo;
 
 import java.util.Scanner;
 

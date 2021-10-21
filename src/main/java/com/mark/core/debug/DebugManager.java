@@ -1,7 +1,7 @@
-package mc.debug;
+package com.mark.core.debug;
 
-import mc.utils.FileLoader;
-import mc.utils.VersionInfo;
+import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.IOException;
 

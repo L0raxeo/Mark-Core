@@ -1,6 +1,6 @@
-package mc.plugins;
+package com.mark.core.plugins;
 
-import mc.utils.VersionInfo;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
 import java.util.HashMap;

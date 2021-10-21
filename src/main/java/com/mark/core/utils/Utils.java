@@ -1,6 +1,6 @@
-package mc.utils;
+package com.mark.core.utils;
 
-import mc.nuclei.Nucleus;
+import com.mark.core.nuclei.Nucleus;
 
 import java.util.*;
 

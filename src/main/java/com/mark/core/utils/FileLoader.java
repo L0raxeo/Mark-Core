@@ -1,4 +1,4 @@
-package mc.utils;
+package com.mark.core.utils;
 
 import java.io.*;
 import java.util.ArrayList;

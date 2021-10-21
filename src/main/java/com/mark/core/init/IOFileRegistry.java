@@ -1,7 +1,7 @@
-package mc.init;
+package com.mark.core.init;
 
-import mc.utils.FileLoader;
-import mc.utils.VersionInfo;
+import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
 import java.io.IOException;

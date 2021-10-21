@@ -1,7 +1,7 @@
-package mc.init;
+package com.mark.core.init;
 
-import mc.MarkCore;
-import mc.utils.VersionInfo;
+import com.mark.core.MarkCore;
+import com.mark.core.utils.VersionInfo;
 
 /**
  * M.A.R.K. origin

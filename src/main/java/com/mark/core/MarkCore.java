@@ -1,14 +1,14 @@
-package mc;
+package com.mark.core;
 
-import mc.debug.DebugManager;
-import mc.init.IOFileRegistry;
-import mc.init.PluginRegistry;
-import mc.input.CustomResponseManager;
-import mc.input.InputHandler;
-import mc.nuclei.NucleusManager;
-import mc.plugins.PluginManager;
-import mc.utils.FileLoader;
-import mc.utils.VersionInfo;
+import com.mark.core.debug.DebugManager;
+import com.mark.core.init.IOFileRegistry;
+import com.mark.core.init.PluginRegistry;
+import com.mark.core.input.CustomResponseManager;
+import com.mark.core.input.InputHandler;
+import com.mark.core.nuclei.NucleusManager;
+import com.mark.core.plugins.PluginManager;
+import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.IOException;
 

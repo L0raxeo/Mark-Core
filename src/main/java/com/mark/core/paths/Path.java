@@ -1,6 +1,6 @@
-package mc.paths;
+package com.mark.core.paths;
 
-import mc.utils.VersionInfo;
+import com.mark.core.utils.VersionInfo;
 
 /**
  * Path represents an individual word.

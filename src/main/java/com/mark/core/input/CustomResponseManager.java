@@ -1,9 +1,9 @@
-package mc.input;
+package com.mark.core.input;
 
-import mc.debug.DebugManager;
-import mc.input.actions.ActionHandler;
-import mc.utils.FileLoader;
-import mc.utils.VersionInfo;
+import com.mark.core.input.actions.ActionHandler;
+import com.mark.core.utils.FileLoader;
+import com.mark.core.debug.DebugManager;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;

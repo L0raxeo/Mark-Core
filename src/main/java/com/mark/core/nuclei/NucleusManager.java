@@ -1,10 +1,10 @@
-package mc.nuclei;
+package com.mark.core.nuclei;
 
-import mc.debug.DebugManager;
-import mc.paths.Path;
-import mc.paths.PathManager;
-import mc.utils.FileLoader;
-import mc.utils.VersionInfo;
+import com.mark.core.debug.DebugManager;
+import com.mark.core.paths.Path;
+import com.mark.core.paths.PathManager;
+import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;

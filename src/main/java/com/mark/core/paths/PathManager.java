@@ -1,8 +1,8 @@
-package mc.paths;
+package com.mark.core.paths;
 
-import mc.debug.DebugManager;
-import mc.utils.Utils;
-import mc.utils.VersionInfo;
+import com.mark.core.utils.Utils;
+import com.mark.core.debug.DebugManager;
+import com.mark.core.utils.VersionInfo;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
-package mc.input.actions;
+package com.mark.core.input.actions;
 
-import mc.input.actions.terminal.TerminalManager;
-import mc.utils.VersionInfo;
+import com.mark.core.input.actions.terminal.TerminalManager;
+import com.mark.core.utils.VersionInfo;
 
 /**
  * Manages {@link Action}.

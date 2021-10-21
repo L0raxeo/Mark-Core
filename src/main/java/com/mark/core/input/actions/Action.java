@@ -1,6 +1,6 @@
-package mc.input.actions;
+package com.mark.core.input.actions;
 
-import mc.utils.VersionInfo;
+import com.mark.core.utils.VersionInfo;
 
 /**
  * An Action represents a response
