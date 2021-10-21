@@ -16,7 +16,7 @@ public class PluginRegistry
      */
     public static void init() throws IOException {
         // Iterates through all registered plugins
-        for (File f : PluginManager.allPlugins)
+        for (File f : PluginManager.allPlugins.keySet())
         {
             // Process builder buffers each process by building each step, and once that process is determined, it is executed
             // 3 args: java -jar currentPlugin.jar
@@ -24,7 +24,10 @@ public class PluginRegistry
             // Sets preferred working directory
             processBuilder.directory(new File("plugins"));
             // Builds/executes process builder
-            processBuilder.start();
+            Process p = processBuilder.start();
+
+            // Indexes process with plugin in case alterations such as "exiting" is necessary
+            PluginManager.allPlugins.put(f, p);
 
             System.out.println("[INFO]: successfully built [" + f.getName() + "]");
         }
@@ -43,7 +46,7 @@ public class PluginRegistry
         {
             if (file.isFile())
             {
-                PluginManager.allPlugins.add(file);
+                PluginManager.allPlugins.put(file, null);
                 System.out.println("[INFO]: registered [" + file.getName() + "]");
             }
         }

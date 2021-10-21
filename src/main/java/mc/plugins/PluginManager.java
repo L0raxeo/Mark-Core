@@ -1,12 +1,11 @@
 package mc.plugins;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class PluginManager
 {
 
-    public static List<File> allPlugins = new ArrayList<>();
+    public static HashMap<File, Process> allPlugins = new HashMap<>();
 
 }
