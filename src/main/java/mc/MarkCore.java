@@ -6,6 +6,7 @@ import mc.init.PluginRegistry;
 import mc.input.CustomResponseManager;
 import mc.input.InputHandler;
 import mc.nuclei.NucleusManager;
+import mc.plugins.PluginManager;
 import mc.utils.FileLoader;
 
 import java.io.IOException;
@@ -41,6 +42,8 @@ public class MarkCore
      */
     public void preInit() throws IOException
     {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::exitProgram));
+
         DefaultFiles.init();
         PluginRegistry.register();
     }
@@ -63,6 +66,11 @@ public class MarkCore
     public void postInit() throws IOException
     {
         NucleusManager.lastNucleus = NucleusManager.getNucleus(FileLoader.readFile("lastSpoken.txt"));
+    }
+
+    private void exitProgram()
+    {
+
     }
 
 }
