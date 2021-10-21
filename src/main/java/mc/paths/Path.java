@@ -13,7 +13,7 @@ import mc.utils.VersionInfo;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "1.0",
+        releaseDate = "10/21/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"

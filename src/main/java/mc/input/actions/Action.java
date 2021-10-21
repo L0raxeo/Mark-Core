@@ -1,5 +1,7 @@
 package mc.input.actions;
 
+import mc.utils.VersionInfo;
+
 /**
  * An Action represents a response
  * triggered by the stimuli (input),
@@ -10,6 +12,14 @@ package mc.input.actions;
  *
  * @author Lorcan A. Cheng
  */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "10/21/2021",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class Action
 {
 
