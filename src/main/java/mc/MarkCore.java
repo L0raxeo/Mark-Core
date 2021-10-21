@@ -30,6 +30,7 @@ public class MarkCore
             System.exit(-1);
         }
 
+        System.out.println("===============================================================================");
         System.out.println("[Mark]: Modular, Assistant, Registry, Kernel - M.A.R.K. is awake");
         InputHandler.listen();
     }
