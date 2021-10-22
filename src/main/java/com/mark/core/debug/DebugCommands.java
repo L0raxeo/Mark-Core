@@ -47,4 +47,9 @@ public class DebugCommands
         }
     }
 
+    public static void forceExit()
+    {
+        System.exit(0);
+    }
+
 }

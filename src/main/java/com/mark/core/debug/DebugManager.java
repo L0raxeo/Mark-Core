@@ -58,6 +58,8 @@ public class DebugManager
         {
             if (argument.contains("debug_toggle"))
                 DebugCommands.toggleDebugMode();
+            else if (argument.contains("force_exit"))
+                DebugCommands.forceExit();
         }
         catch (IOException e)
         {
