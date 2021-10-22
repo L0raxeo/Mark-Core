@@ -54,10 +54,12 @@ public class PluginRegistry
      */
     public static void register()
     {
+        // Handles plugins directory and its existence
         if (!Files.exists(Paths.get("plugins")))
         {
             System.out.println("[INFO]: plugins directory does not exist. creating new one");
 
+            // Creates new directory if plugins directory doesn't exist
             boolean wasSuccessful = new File("plugins").mkdirs();
 
             if (wasSuccessful)
@@ -68,6 +70,7 @@ public class PluginRegistry
         else
             System.out.println("[INFO]: plugins directory already exists. skipping process...");
 
+        // Registers plugins
         File[] files = new File("plugins").listFiles();
 
         assert files != null && files.length > 0 : "list variable is null or empty";
