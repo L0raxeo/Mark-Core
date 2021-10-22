@@ -24,9 +24,11 @@ public class PluginRegistry
 {
 
     /**
-     * Executes each plugin
+     * Executes each plugin and creating
+     * and indexing each associated process
      */
-    public static void init() throws IOException {
+    public static void init() throws IOException
+    {
         // Iterates through all registered plugins
         for (File f : PluginManager.allPlugins.keySet())
         {
@@ -59,7 +61,7 @@ public class PluginRegistry
             if (file.isFile())
             {
                 PluginManager.allPlugins.put(file, null);
-                System.out.println("[INFO]: registered [" + file.getName() + "]");
+                System.out.println("[INFO]: successfully registered [" + file.getName() + "]");
             }
         }
     }

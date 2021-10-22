@@ -13,8 +13,9 @@ import com.mark.core.utils.VersionInfo;
 import java.io.IOException;
 
 /**
- * The base of all Mark-Core games. This class is the
- * initial starting point of the M.A.R.K.
+ * The base of all Mark-Core processes/plugins.
+ * This class is the initial starting point of
+ * the M.A.R.K.
  *
  * @author Lorcan Andrew Cheng
  */
@@ -34,7 +35,7 @@ public class MarkCore
      */
     public void wake()
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(this::exitProgram));
+        Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
 
         try
         {
@@ -55,6 +56,7 @@ public class MarkCore
 
     /**
      * For processes that do not depend on Mark-Core components
+     *
      * @throws IOException handled by wake()
      */
     public void preInit() throws IOException
@@ -65,6 +67,7 @@ public class MarkCore
 
     /**
      * For processes that depend on processes initialized in the preInit() method
+     *
      * @throws IOException handled by wake()
      */
     public void init() throws IOException
@@ -75,7 +78,10 @@ public class MarkCore
     }
 
     /**
-     * For initialization sequences that might depend on processes initialized in init() method, or for registering components from external files to the main program.
+     * For initialization sequences that might depend on processes
+     * initialized in init() method, or for registering components
+     * from external files to the main program.
+     *
      * @throws IOException handled by wake()
      */
     public void postInit() throws IOException
@@ -86,7 +92,7 @@ public class MarkCore
     /**
      * Exits and destroys all currently running plugins
      */
-    private void exitProgram()
+    private void terminateProgram()
     {
         for (Process p : PluginManager.allPlugins.values())
         {
