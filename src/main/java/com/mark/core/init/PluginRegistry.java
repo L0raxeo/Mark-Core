@@ -5,6 +5,8 @@ import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Initialization of external plugins,
@@ -52,10 +54,23 @@ public class PluginRegistry
      */
     public static void register()
     {
+        if (!Files.exists(Paths.get("plugins")))
+        {
+            System.out.println("[INFO]: plugins directory does not exist. creating new one");
+
+            boolean wasSuccessful = new File("plugins").mkdirs();
+
+            if (wasSuccessful)
+            {
+                System.out.println("[INFO]: successfully created plugins directory");
+            }
+        }
+        else
+            System.out.println("[INFO]: plugins directory already exists. skipping process...");
+
         File[] files = new File("plugins").listFiles();
 
-        // only iterates if file array is not null
-        assert files != null;
+        assert files != null && files.length > 0 : "list variable is null or empty";
         for (File file : files)
         {
             if (file.isFile())
