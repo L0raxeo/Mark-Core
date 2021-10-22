@@ -25,6 +25,7 @@ public class IOFileRegistry
 
     /**
      * Initializes prefab files
+     *
      * @throws IOException traces to MarkCore initialization sequence
      */
     public static void init() throws IOException
