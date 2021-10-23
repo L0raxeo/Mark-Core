@@ -28,7 +28,7 @@ public class ActionHandler
     {
         Action queuedAction = new Action(action.split(":")[1], info);
 
-        switch (queuedAction.type)
+        switch (queuedAction.type())
         {
             case "[search]":
                 TerminalManager.queueCommand(queuedAction);

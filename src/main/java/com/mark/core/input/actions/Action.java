@@ -7,7 +7,7 @@ import com.mark.core.utils.VersionInfo;
  * triggered by the stimuli (input),
  * that doesn't take form in a verbal
  * response.
- *
+ * <p>
  * Handled by {@link ActionHandler}
  *
  * @author Lorcan A. Cheng
@@ -20,20 +20,4 @@ import com.mark.core.utils.VersionInfo;
                 "Lorcan Andrew Cheng"
         }
 )
-public class Action
-{
-
-    /**
-     * Types of actions:
-     * - [search] = Searches the "info" on web browser
-     */
-    public final String type;
-    public final String info;
-
-    public Action(String type, String info)
-    {
-        this.type = type;
-        this.info = info;
-    }
-
-}
+public record Action(String type, String info) {}
