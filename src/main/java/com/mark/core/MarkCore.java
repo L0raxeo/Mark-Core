@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/23/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -37,6 +37,8 @@ public class MarkCore
      */
     public void wake()
     {
+        System.out.println("[INFO]: executing wake process...");
+
         Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
 
         try
@@ -51,6 +53,8 @@ public class MarkCore
             System.exit(-1);
         }
 
+        System.out.println("[INFO]: successfully completed initialization sequence");
+        System.out.println("[INFO]: waking M.A.R.K. Core");
         System.out.println("===============================================================================");
         System.out.println("[Mark]: Modular, Assistant, Registry, Kernel - M.A.R.K. is awake");
         InputHandler.listen();
