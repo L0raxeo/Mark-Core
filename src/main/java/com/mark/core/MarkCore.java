@@ -38,8 +38,9 @@ public class MarkCore
     public void wake()
     {
         System.out.println("[INFO]: executing wake process...");
-
+        System.out.println("[INFO]: adding shutdown hook.");
         Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
+        System.out.println("[INFO]: successfully added shutdown hook to runtime, and connected it to terminate program.");
 
         try
         {
@@ -49,12 +50,13 @@ public class MarkCore
         }
         catch (IOException e)
         {
+            System.out.println("[INFO]: init/WARN - fatal error during initialization sequence.");
             e.printStackTrace();
             System.exit(-1);
         }
 
         System.out.println("[INFO]: successfully completed initialization sequence");
-        System.out.println("[INFO]: waking M.A.R.K. Core");
+        System.out.println("[INFO]: waking M.A.R.K. Core...");
         System.out.println("===============================================================================");
         System.out.println("[Mark]: Modular, Assistant, Registry, Kernel - M.A.R.K. is awake");
         InputHandler.listen();
@@ -101,7 +103,9 @@ public class MarkCore
      */
     private void terminateProgram()
     {
-        System.out.println("[INFO]: MarkCore abruptly terminated. this could be a problem.");
+        System.out.println("[INFO]: shutDownHook/WARN - MarkCore abruptly terminated. this could be a problem.");
+
+        System.out.println("[INFO]: attempting to shut down...");
 
         for (Map.Entry<File, Process> e : PluginManager.allPlugins.entrySet())
         {
