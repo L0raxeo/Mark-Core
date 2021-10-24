@@ -16,7 +16,7 @@ import java.nio.file.Paths;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/23/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -57,7 +57,7 @@ public class PluginRegistry
         // Handles plugins directory and its existence
         if (!Files.exists(Paths.get("plugins")))
         {
-            System.out.println("[INFO]: plugins directory does not exist. creating new one");
+            System.out.println("[INFO]: plugins directory does not exist. creating new one...");
 
             // Creates new directory if plugins directory doesn't exist
             boolean wasSuccessful = new File("plugins").mkdirs();
