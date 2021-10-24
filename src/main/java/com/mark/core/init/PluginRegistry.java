@@ -16,7 +16,7 @@ import java.nio.file.Paths;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/22/2021",
+        releaseDate = "10/23/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -68,7 +68,7 @@ public class PluginRegistry
             }
         }
         else
-            System.out.println("[INFO]: plugins directory already exists. skipping process...");
+            System.out.println("[INFO]: plugins directory already exists. skipping lines...");
 
         // Registers plugins
         File[] files = new File("plugins").listFiles();

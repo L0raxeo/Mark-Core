@@ -10,7 +10,9 @@ import com.mark.core.plugins.PluginManager;
 import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.VersionInfo;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * The base of all Mark-Core processes/plugins.
@@ -21,7 +23,7 @@ import java.io.IOException;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/23/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -90,14 +92,21 @@ public class MarkCore
     }
 
     /**
-     * Exits and destroys all currently running plugins
+     * Exits and destroys all currently running plugins.
+     * Iterates through all plugins in {@link PluginManager}
      */
     private void terminateProgram()
     {
-        for (Process p : PluginManager.allPlugins.values())
+        System.out.println("[INFO]: MarkCore abruptly terminated. this could be a problem.");
+
+        for (Map.Entry<File, Process> e : PluginManager.allPlugins.entrySet())
         {
-            p.destroy();
+            System.out.println("[INFO]: attempting to terminate plugin [" + e.getKey().getName() + "]");
+            e.getValue().destroy();
+            System.out.println("[INFO]: successfully terminated plugin [" + e.getKey().getName() + "]");
         }
+
+        System.out.println("[INFO]: successfully terminated all programs, including plugins.");
     }
 
 }
