@@ -34,31 +34,7 @@ public class CustomResponseManager
      * - String 1: stimulus - string that triggers the response/action
      * - String 2: result - either an action or a string that is triggered by the stimulus
      */
-    private static final HashMap<String, String> customResponses = new HashMap<>();
-
-    /**
-     * Registers/initialization all the custom responses loaded in from customResponses.txt
-     */
-    public static void register()
-    {
-        ArrayList<String> customResponsesRaw = null;
-
-        try
-        {
-            customResponsesRaw = FileLoader.readAllLinesFromFile("customResponses.txt");
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        assert customResponsesRaw != null;
-        for (String s : customResponsesRaw)
-        {
-            String[] customResponseSplit = s.split("=");
-            customResponses.put(customResponseSplit[0], customResponseSplit[1]);
-        }
-    }
+    public static final HashMap<String, String> customResponses = new HashMap<>();
 
     /**
      * Checks if input is a custom response

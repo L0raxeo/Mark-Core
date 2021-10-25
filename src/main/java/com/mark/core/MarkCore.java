@@ -1,17 +1,18 @@
 package com.mark.core;
 
 import com.mark.core.debug.DebugManager;
-import com.mark.core.init.IOFileRegistry;
-import com.mark.core.init.PluginRegistry;
+import com.mark.core.init.*;
 import com.mark.core.input.CustomResponseManager;
 import com.mark.core.input.InputHandler;
 import com.mark.core.nuclei.NucleusManager;
 import com.mark.core.plugins.PluginManager;
 import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -32,15 +33,22 @@ import java.util.Map;
 public class MarkCore
 {
 
+    private final ArrayList<Registry> registries = new ArrayList<>();
+
     /**
      * Wakes Mark-Core and executes all initialization methods
      */
     public void wake()
     {
         System.out.println("[Core] init/INFO [com.mark.core]: executing wake process...");
+
         System.out.println("[Core] init/INFO [com.mark.core]: adding shutdown hook.");
         Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
         System.out.println("[Core] init/INFO [com.mark.core]: successfully added shutdown hook to runtime, and connected it to terminate program.");
+
+        System.out.println("[Core] init/INFO [com.mark.core]: attempting to register registries...");
+        registerRegistries();
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully registered all registries!");
 
         try
         {
@@ -64,6 +72,20 @@ public class MarkCore
     }
 
     /**
+     * Registers all registries in order to make
+     * it easier to implement more registries in
+     * the future.
+     */
+    private void registerRegistries()
+    {
+        registries.add(new CustomResponseRegistry());
+        registries.add(new DebugRegistry());
+        registries.add(new IOFileRegistry());
+        registries.add(new NucleusRegistry());
+        registries.add(new PluginRegistry());
+    }
+
+    /**
      * For processes that do not depend on Mark-Core components
      *
      * @throws IOException handled by wake()
@@ -72,8 +94,10 @@ public class MarkCore
     {
         System.out.println("[Core] init/INFO [com.mark.core]: attempting to execute pre-init sequence");
 
-        IOFileRegistry.init();
-        PluginRegistry.register();
+        for (Registry r : registries)
+        {
+            r.preInit();
+        }
 
         System.out.println("[Core] init/INFO [com.mark.core]: successfully executed pre-init sequence");
     }
@@ -87,9 +111,10 @@ public class MarkCore
     {
         System.out.println("[Core] init/INFO [com.mark.core]: attempting to initialize (execute init sequence) Mark-Core");
 
-        DebugManager.init();
-        CustomResponseManager.register();
-        PluginRegistry.init();
+        for (Registry r : registries)
+        {
+            r.init();
+        }
 
         System.out.println("[Core] init/INFO [com.mark.core]: successfully initialized (executed init sequence) Mark-Core");
     }
@@ -105,7 +130,10 @@ public class MarkCore
     {
         System.out.println("[Core] init/INFO [com.mark.core]: attempting to execute post-init sequence");
 
-        NucleusManager.lastNucleus = NucleusManager.getNucleus(FileLoader.readFile("lastSpoken.txt"));
+        for (Registry r : registries)
+        {
+            r.postInit();
+        }
 
         System.out.println("[Core] init/INFO [com.mark.core]: successfully executed post-init sequence");
     }
