@@ -6,6 +6,13 @@ import com.mark.core.utils.Registry;
 
 import java.io.IOException;
 
+/**
+ * The nucleus registry is
+ * the registry for the
+ * {@link NucleusManager}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
 public class NucleusRegistry implements Registry
 {
 

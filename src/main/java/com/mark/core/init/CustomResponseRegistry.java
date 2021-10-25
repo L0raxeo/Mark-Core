@@ -3,10 +3,26 @@ package com.mark.core.init;
 import com.mark.core.input.CustomResponseManager;
 import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.Registry;
+import com.mark.core.utils.VersionInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The custom response registry
+ * is the registry for the
+ * {@link CustomResponseManager}.
+ *
+ * @author Lorcan Andrew Cheng
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "10/25/2021",
+        since = "1.0",
+        contributors = {
+                "Lorcan Andrew Cheng"
+        }
+)
 public class CustomResponseRegistry implements Registry
 {
 
