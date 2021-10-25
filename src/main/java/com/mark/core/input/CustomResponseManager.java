@@ -20,7 +20,7 @@ import java.util.HashMap;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -79,7 +79,7 @@ public class CustomResponseManager
             }
 
             if (DebugManager.active)
-                System.out.println("[Debug]: " + "[ " + customResponse + " ] - Custom Response: " + "[" + stimulus + "]");
+                System.out.println("[Core] debug/INFO [com.mark.core.input]: " + "[ " + customResponse + " ] - Custom Response: " + "[" + stimulus + "]");
             else
                 System.out.println("[Mark]: " + customResponse);
         }

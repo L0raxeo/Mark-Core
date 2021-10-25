@@ -18,7 +18,7 @@ import java.util.HashMap;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -69,9 +69,9 @@ public class Nucleus
         for (Nucleus n : connections.keySet())
         {
             if (DebugManager.active)
-                System.out.println("[Debug]: [ " + n.def + "] - Confidence Rate: [" + connections.get(n) + "%]");
+                System.out.println("[Core] nucleus/INFO [com.mark.core.nuclei]: [ " + n.def + "] - Confidence Rate: [" + connections.get(n) + "%]");
             else
-                System.out.println("[Markus]: " + n.def);
+                System.out.println("[Mark]: " + n.def);
         }
     }
 

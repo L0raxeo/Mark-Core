@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -78,7 +78,7 @@ public class NucleusManager
         allNuclei.add(newNucleus);
 
         if (DebugManager.active)
-            System.out.println("[Debug]: defining nucleus: " + newNucleus.def);
+            System.out.println("[Core]: debug/INFO [com.mark.core.nuclei]: defining nucleus: " + newNucleus.def);
 
         return newNucleus;
     }

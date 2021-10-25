@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -34,7 +34,7 @@ public class TerminalManager
         }
         catch (IOException e)
         {
-            System.out.println("[Markus]: ERROR - unable to run command. This could be a problem. (Terminal Manager)");
+            System.out.println("[Core]: terminal manager/ERROR [com.mark.core.input.actions.terminal]: unable to run command. This could be a problem. (Terminal Manager)");
         }
     }
 
