@@ -60,7 +60,7 @@ public class InputHandler
         }
         else if (CustomResponseManager.isCustomResponse(rawInput) && DebugManager.active)
         {
-            System.out.println("[Debug]: INFO - invoked custom response");
+            System.out.println("[Core]: debug/INFO [com.mark.core.input]: invoked custom response");
         }
         else if (splitInput.length == 0)
         {

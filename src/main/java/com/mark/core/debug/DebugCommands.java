@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/24/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -32,17 +32,17 @@ public class DebugCommands
         {
             FileLoader.writeFile("debug_info.txt", "false");
             DebugManager.active = false;
-            System.out.println("[Debug]: debug mode off");
+            System.out.println("[Core] debug/INFO [com.mark.core.debug]: debug mode off");
         }
         else if (FileLoader.readFile("debug_info.txt").equals("false"))
         {
             FileLoader.writeFile("debug_info.txt", "true");
             DebugManager.active = true;
-            System.out.println("[Debug]: debug mode on");
+            System.out.println("[Core] debug/INFO [com.mark.core.debug]: debug mode on");
         }
         else
         {
-            System.out.println("[Debug]: FATAL ERROR - could not toggle debug mode (Commands)");
+            System.out.println("[Core] debug/ERROR [com.mark.core.debug] could not toggle debug mode (Commands)");
             System.exit(-1);
         }
     }

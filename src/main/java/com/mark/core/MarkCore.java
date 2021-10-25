@@ -37,10 +37,10 @@ public class MarkCore
      */
     public void wake()
     {
-        System.out.println("[INFO]: executing wake process...");
-        System.out.println("[INFO]: adding shutdown hook.");
+        System.out.println("[Core] init/INFO [com.mark.core]: executing wake process...");
+        System.out.println("[Core] init/INFO [com.mark.core]: adding shutdown hook.");
         Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
-        System.out.println("[INFO]: successfully added shutdown hook to runtime, and connected it to terminate program.");
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully added shutdown hook to runtime, and connected it to terminate program.");
 
         try
         {
@@ -50,15 +50,16 @@ public class MarkCore
         }
         catch (IOException e)
         {
-            System.out.println("[INFO]: init/WARN - fatal error during initialization sequence.");
+            System.out.println("[Core] init/WARN [com.mark.core]: fatal error during initialization sequence.");
             e.printStackTrace();
             System.exit(-1);
         }
 
-        System.out.println("[INFO]: successfully completed initialization sequence");
-        System.out.println("[INFO]: waking M.A.R.K. Core...");
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully completed initialization sequence");
+        System.out.println("[Core] Startup Done!");
+        System.out.println("[Core] waking M.A.R.K. Core...");
         System.out.println("===============================================================================");
-        System.out.println("[Mark]: Modular, Assistant, Registry, Kernel - M.A.R.K. is awake");
+        System.out.println("[Mark] Modular, Assistant, Registry, Kernel - M.A.R.K. is awake and listening");
         InputHandler.listen();
     }
 
@@ -69,8 +70,12 @@ public class MarkCore
      */
     public void preInit() throws IOException
     {
+        System.out.println("[Core] init/INFO [com.mark.core]: attempting to execute pre-init sequence");
+
         IOFileRegistry.init();
         PluginRegistry.register();
+
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully executed pre-init sequence");
     }
 
     /**
@@ -80,9 +85,13 @@ public class MarkCore
      */
     public void init() throws IOException
     {
+        System.out.println("[Core] init/INFO [com.mark.core]: attempting to initialize (execute init sequence) Mark-Core");
+
         DebugManager.init();
         CustomResponseManager.register();
         PluginRegistry.init();
+
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully initialized (executed init sequence) Mark-Core");
     }
 
     /**
@@ -94,7 +103,11 @@ public class MarkCore
      */
     public void postInit() throws IOException
     {
+        System.out.println("[Core] init/INFO [com.mark.core]: attempting to execute post-init sequence");
+
         NucleusManager.lastNucleus = NucleusManager.getNucleus(FileLoader.readFile("lastSpoken.txt"));
+
+        System.out.println("[Core] init/INFO [com.mark.core]: successfully executed post-init sequence");
     }
 
     /**
@@ -103,18 +116,16 @@ public class MarkCore
      */
     private void terminateProgram()
     {
-        System.out.println("[INFO]: shutDownHook/WARN - MarkCore abruptly terminated. this could be a problem.");
-
-        System.out.println("[INFO]: attempting to shut down...");
+        System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.\n[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
 
         for (Map.Entry<File, Process> e : PluginManager.allPlugins.entrySet())
         {
-            System.out.println("[INFO]: attempting to terminate plugin [" + e.getKey().getName() + "]");
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + e.getKey().getName() + "]");
             e.getValue().destroy();
-            System.out.println("[INFO]: successfully terminated plugin [" + e.getKey().getName() + "]");
+            System.out.println("[Core] successfully terminated plugin [" + e.getKey().getName() + "]");
         }
 
-        System.out.println("[INFO]: successfully terminated all programs, including plugins.");
+        System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated all programs, including plugins.");
     }
 
 }
