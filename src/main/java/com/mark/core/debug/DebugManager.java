@@ -60,6 +60,8 @@ public class DebugManager
                 DebugCommands.toggleDebugMode();
             else if (argument.contains("force_exit"))
                 DebugCommands.forceExit();
+            else
+                System.out.println("[Mark]: '" + argument + "' is not a debug command");
         }
         catch (IOException e)
         {
