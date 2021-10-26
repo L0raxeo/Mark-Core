@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/21/2021",
+        releaseDate = "10/26/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
