@@ -1,6 +1,7 @@
 package com.mark.core.init;
 
 import com.mark.core.utils.FileLoader;
+import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
@@ -20,7 +21,7 @@ import java.io.IOException;
                 "Lorcan Andrew Cheng"
         }
 )
-public class IOFileRegistry
+public class IOFileRegistry implements Registry
 {
 
     /**
@@ -28,7 +29,8 @@ public class IOFileRegistry
      *
      * @throws IOException traces to MarkCore initialization sequence
      */
-    public static void init() throws IOException
+    @Override
+    public void preInit() throws IOException
     {
         if (!new File("lastSpoken.txt").exists())
         {

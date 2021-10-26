@@ -1,6 +1,7 @@
 package com.mark.core.init;
 
 import com.mark.core.plugins.PluginManager;
+import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
@@ -22,14 +23,15 @@ import java.nio.file.Paths;
                 "Lorcan Andrew Cheng"
         }
 )
-public class PluginRegistry
+public class PluginRegistry implements Registry
 {
 
     /**
      * Executes each plugin and creating
      * and indexing each associated process
      */
-    public static void init() throws IOException
+    @Override
+    public void init() throws IOException
     {
         // Iterates through all registered plugins
         for (File f : PluginManager.allPlugins.keySet())
@@ -54,7 +56,8 @@ public class PluginRegistry
     /**
      * Registers each plugin and implements it into Mark Core
      */
-    public static void register()
+    @Override
+    public void preInit()
     {
         // Handles plugins directory and its existence
         if (!Files.exists(Paths.get("plugins")))
