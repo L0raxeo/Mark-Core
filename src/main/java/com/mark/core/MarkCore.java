@@ -1,12 +1,8 @@
 package com.mark.core;
 
-import com.mark.core.debug.DebugManager;
 import com.mark.core.init.*;
-import com.mark.core.input.CustomResponseManager;
 import com.mark.core.input.InputHandler;
-import com.mark.core.nuclei.NucleusManager;
 import com.mark.core.plugins.PluginManager;
-import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
@@ -43,7 +39,7 @@ public class MarkCore
         System.out.println("[Core] init/INFO [com.mark.core]: executing wake process...");
 
         System.out.println("[Core] init/INFO [com.mark.core]: adding shutdown hook.");
-        Runtime.getRuntime().addShutdownHook(new Thread(this::terminateProgram));
+        Runtime.getRuntime().addShutdownHook(new Thread(this::onTerminate));
         System.out.println("[Core] init/INFO [com.mark.core]: successfully added shutdown hook to runtime, and connected it to terminate program.");
 
         System.out.println("[Core] init/INFO [com.mark.core]: attempting to register registries...");
@@ -142,7 +138,7 @@ public class MarkCore
      * Exits and destroys all currently running plugins.
      * Iterates through all plugins in {@link PluginManager}
      */
-    private void terminateProgram()
+    private void onTerminate()
     {
         System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.\n[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
 
@@ -150,7 +146,7 @@ public class MarkCore
         {
             System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + e.getKey().getName() + "]");
             e.getValue().destroy();
-            System.out.println("[Core] successfully terminated plugin [" + e.getKey().getName() + "]");
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated plugin [" + e.getKey().getName() + "]");
         }
 
         System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated all programs, including plugins.");

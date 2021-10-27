@@ -59,6 +59,8 @@ public class PluginRegistry implements Registry
     @Override
     public void preInit()
     {
+        System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: attempting to scan plugins directory for plugins. This includes checking the existance of the directory 'plugins'.");
+
         // Handles plugins directory and its existence
         if (!Files.exists(Paths.get("plugins")))
         {
