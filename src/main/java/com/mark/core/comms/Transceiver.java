@@ -107,7 +107,7 @@ public class Transceiver
      */
     public static String getLastMessage(String originName)
     {
-        return Objects.requireNonNull(PluginManager.getPluginByName(originName)).lastReceivedMessage;
+        return Objects.requireNonNull(PluginManager.getPlugin(originName)).lastReceivedMessage;
     }
 
 }

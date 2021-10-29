@@ -26,7 +26,16 @@ public class PluginManager
      */
     public static ArrayList<Plugin> allPlugins = new ArrayList<>();
 
-    public static Plugin getPluginByName(String name)
+    /*
+    PLUGIN NAME SPECIFIED IN INFO FILE OF PLUGIN
+     */
+    /**
+     * Gets plugin in allPlugins arraylist
+     * by name.
+     * @param name of plugin.
+     * @return plugin with associated name.
+     */
+    public static Plugin getPlugin(String name)
     {
         for (Plugin plugin : allPlugins)
         {

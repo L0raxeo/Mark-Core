@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 @VersionInfo(
         version = "2.0",
-        releaseDate = "10/28/2021",
+        releaseDate = "10/29/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -75,9 +75,9 @@ public class PluginRegistry implements Registry
                     jarFile = child;
                     System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found jarFile for plugin [" + rootDir.getName() + "].");
                 }
-                else if (child.getName().equals("comms"))
+                else if (child.getName().equals("libs"))
                 {
-                    System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found comms directory for plugin [" + rootDir.getName() + "].");
+                    System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found libs directory for plugin [" + rootDir.getName() + "].");
                     for (File transceiver : Objects.requireNonNull(child.listFiles()))
                     {
                         if (transceiver.getName().equals("send.txt"))
@@ -91,7 +91,7 @@ public class PluginRegistry implements Registry
                             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found receiver for plugin [" + rootDir.getName() + "].");
                         }
                     }
-                    System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found all children for comms for plugin [" + rootDir.getName() + "].");
+                    System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found all children for libs for plugin [" + rootDir.getName() + "].");
                 }
             }
 
