@@ -29,8 +29,6 @@ import java.util.Objects;
 public class Transceiver
 {
 
-    public String lastMessageReceived = null;
-
     /**
      * Queues a message to be sent
      * to the specified program.

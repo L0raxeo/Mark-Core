@@ -27,13 +27,10 @@ public class PluginManager
      */
     public static ArrayList<Plugin> allPlugins = new ArrayList<>();
 
-    /*
-    PLUGIN NAME SPECIFIED IN INFO FILE OF PLUGIN
-     */
     /**
      * Gets plugin in allPlugins arraylist
      * by name.
-     * @param name of plugin.
+     * @param name of plugin being retrieved.
      * @return plugin with associated name.
      */
     public static Plugin getPluginByName(String name)
@@ -47,6 +44,13 @@ public class PluginManager
         return null;
     }
 
+    /**
+     * Gets plugin in allPlugins arraylist
+     * by ID;
+     *
+     * @param ID of plugin being retrieved.
+     * @return plugin with associated ID,
+     */
     public static Plugin getPluginByID(String ID)
     {
         for (Plugin plugin : allPlugins)
