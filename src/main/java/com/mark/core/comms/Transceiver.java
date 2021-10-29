@@ -1,8 +1,15 @@
 package com.mark.core.comms;
 
+import com.mark.core.plugins.Plugin;
+import com.mark.core.plugins.PluginManager;
+import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Transceiver sends handles all
@@ -11,10 +18,9 @@ import java.io.File;
  *
  * @author Lorcan Andrew Cheng
  */
-
 @VersionInfo(
         version = "2.0",
-        releaseDate = "10/28/2021",
+        releaseDate = "10/29/2021",
         since = "2.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -22,6 +28,8 @@ import java.io.File;
 )
 public class Transceiver
 {
+
+    public String lastMessageReceived = null;
 
     /**
      * Queues a message to be sent
@@ -32,28 +40,74 @@ public class Transceiver
      */
     public static void queueMessage(File program, String message)
     {
+        try
+        {
+            FileLoader.writeFile(program.getPath(), message);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * Queues a message to be sent
+     * to the specified program.
+     *
+     * @param pathToFile being sent the message.
+     * @param message being queued/sent.
+     */
+    public static void queueMessage(String pathToFile, String message)
+    {
+        try
+        {
+            FileLoader.writeFile(pathToFile, message);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Checks inbox/any unread
      * messages.
      */
-    public static String checkInbox()
+    public static List<String> checkInbox()
     {
-        return null;
+        List<String> newMessages = new ArrayList<>();
+
+        for (Plugin plugin : PluginManager.allPlugins)
+        {
+            try
+            {
+                String curInbox = FileLoader.readFile(plugin.getMessenger());
+
+                if (plugin.lastReceivedMessage == null || !plugin.lastReceivedMessage.equals(curInbox))
+                {
+                    plugin.lastReceivedMessage = FileLoader.readFile(plugin.getMessenger().getPath());
+                    newMessages.add(plugin.lastReceivedMessage);
+                }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return newMessages;
     }
 
     /**
      * Gets last message from
      * specified program.
      *
-     * @param origin is the origin and
+     * @param originName is the origin and
      *               message from program.
      */
-    public static String getLastMessage(File origin)
+    public static String getLastMessage(String originName)
     {
-        return null;
+        return Objects.requireNonNull(PluginManager.getPluginByName(originName)).lastReceivedMessage;
     }
 
 }

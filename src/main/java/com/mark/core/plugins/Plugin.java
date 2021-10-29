@@ -13,7 +13,7 @@ import java.io.File;
  */
 @VersionInfo(
         version = "2.0",
-        releaseDate = "10/28/2021",
+        releaseDate = "10/29/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -31,6 +31,12 @@ public class Plugin
      * so that it can be changed.
      */
     public Process process;
+
+    /**
+     * Last message to have been read
+     * from this program.
+     */
+    public String lastReceivedMessage;
 
     /**
      * @param rootDir root directory of plugin

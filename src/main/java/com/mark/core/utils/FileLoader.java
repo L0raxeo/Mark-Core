@@ -34,6 +34,12 @@ public class FileLoader
         return br.readLine();
     }
 
+    public static String readFile(File file) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new FileReader(file.getPath()));
+        return br.readLine();
+    }
+
     /**
      * Reads each line in a text file
      * @param path of the file
