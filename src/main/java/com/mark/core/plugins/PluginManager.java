@@ -3,6 +3,7 @@ package com.mark.core.plugins;
 import com.mark.core.utils.VersionInfo;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -11,8 +12,8 @@ import java.util.HashMap;
  * @author Lorcan Andrew Cheng
  */
 @VersionInfo(
-        version = "1.0",
-        releaseDate = "10/21/2021",
+        version = "2.0",
+        releaseDate = "10/28/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -21,8 +22,8 @@ import java.util.HashMap;
 public class PluginManager
 {
     /**
-     * HashMap with all Plugins and associated processes
+     * Array with all Plugins and associated processes
      */
-    public static HashMap<File, Process> allPlugins = new HashMap<>();
+    public static ArrayList<Plugin> allPlugins = new ArrayList<>();
 
 }

@@ -2,14 +2,13 @@ package com.mark.core;
 
 import com.mark.core.init.*;
 import com.mark.core.input.InputHandler;
+import com.mark.core.plugins.Plugin;
 import com.mark.core.plugins.PluginManager;
 import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * The base of all Mark-Core processes/plugins.
@@ -142,11 +141,11 @@ public class MarkCore
     {
         System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.\n[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
 
-        for (Map.Entry<File, Process> e : PluginManager.allPlugins.entrySet())
+        for (Plugin plugin : PluginManager.allPlugins)
         {
-            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + e.getKey().getName() + "]");
-            e.getValue().destroy();
-            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated plugin [" + e.getKey().getName() + "]");
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + plugin.getJarFile().getName() + "]");
+            plugin.process().destroy();
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated plugin [" + plugin.getJarFile().getName() + "]");
         }
 
         System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated all programs, including plugins.");
