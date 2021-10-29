@@ -1,4 +1,4 @@
-package com.mark.core.paths;
+package com.mark.core.input.inputHeirarchy.paths;
 
 import com.mark.core.utils.Utils;
 import com.mark.core.debug.DebugManager;
@@ -63,7 +63,7 @@ public class PathManager
         allPaths.add(newPath);
 
         if (DebugManager.active)
-            System.out.println("[Core] debug/INFO [com.mark.core.paths]: defining path: " + def);
+            System.out.println("[Core] debug/INFO [com.mark.core.input.inputHeirarchy.paths]: defining path: " + def);
 
         return newPath;
     }

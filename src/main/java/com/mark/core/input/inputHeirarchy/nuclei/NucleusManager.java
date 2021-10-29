@@ -1,8 +1,8 @@
-package com.mark.core.nuclei;
+package com.mark.core.input.inputHeirarchy.nuclei;
 
 import com.mark.core.debug.DebugManager;
-import com.mark.core.paths.Path;
-import com.mark.core.paths.PathManager;
+import com.mark.core.input.inputHeirarchy.paths.Path;
+import com.mark.core.input.inputHeirarchy.paths.PathManager;
 import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.VersionInfo;
 
@@ -78,7 +78,7 @@ public class NucleusManager
         allNuclei.add(newNucleus);
 
         if (DebugManager.active)
-            System.out.println("[Core]: debug/INFO [com.mark.core.nuclei]: defining nucleus: " + newNucleus.def);
+            System.out.println("[Core]: debug/INFO [com.mark.core.input.inputHeirarchy.nuclei]: defining nucleus: " + newNucleus.def);
 
         return newNucleus;
     }

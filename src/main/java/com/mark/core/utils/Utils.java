@@ -1,6 +1,6 @@
 package com.mark.core.utils;
 
-import com.mark.core.nuclei.Nucleus;
+import com.mark.core.input.inputHeirarchy.nuclei.Nucleus;
 
 import java.util.*;
 

@@ -1,7 +1,7 @@
-package com.mark.core.nuclei;
+package com.mark.core.input.inputHeirarchy.nuclei;
 
 import com.mark.core.debug.DebugManager;
-import com.mark.core.paths.Path;
+import com.mark.core.input.inputHeirarchy.paths.Path;
 import com.mark.core.utils.Utils;
 import com.mark.core.utils.VersionInfo;
 
@@ -69,7 +69,7 @@ public class Nucleus
         for (Nucleus n : connections.keySet())
         {
             if (DebugManager.active)
-                System.out.println("[Core] nucleus/INFO [com.mark.core.nuclei]: [ " + n.def + "] - Confidence Rate: [" + connections.get(n) + "%]");
+                System.out.println("[Core] nucleus/INFO [com.mark.core.input.inputHeirarchy.nuclei]: [ " + n.def + "] - Confidence Rate: [" + connections.get(n) + "%]");
             else
                 System.out.println("[Mark]: " + n.def);
         }

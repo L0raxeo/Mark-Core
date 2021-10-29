@@ -1,4 +1,4 @@
-package com.mark.core.paths;
+package com.mark.core.input.inputHeirarchy.paths;
 
 import com.mark.core.utils.VersionInfo;
 
