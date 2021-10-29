@@ -1,6 +1,6 @@
 package com.mark.core.input;
 
-import com.mark.core.input.inputHeirarchy.nuclei.NucleusManager;
+import com.mark.core.input.inputHierarchy.nuclei.NucleusManager;
 import com.mark.core.utils.Utils;
 import com.mark.core.debug.DebugManager;
 import com.mark.core.utils.VersionInfo;

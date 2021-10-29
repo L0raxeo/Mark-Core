@@ -1,6 +1,6 @@
 package com.mark.core.init;
 
-import com.mark.core.input.inputHeirarchy.nuclei.NucleusManager;
+import com.mark.core.input.inputHierarchy.nuclei.NucleusManager;
 import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.Registry;
 

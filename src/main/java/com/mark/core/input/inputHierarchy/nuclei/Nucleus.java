@@ -1,7 +1,7 @@
-package com.mark.core.input.inputHeirarchy.nuclei;
+package com.mark.core.input.inputHierarchy.nuclei;
 
 import com.mark.core.debug.DebugManager;
-import com.mark.core.input.inputHeirarchy.paths.Path;
+import com.mark.core.input.inputHierarchy.paths.Path;
 import com.mark.core.utils.Utils;
 import com.mark.core.utils.VersionInfo;
 
