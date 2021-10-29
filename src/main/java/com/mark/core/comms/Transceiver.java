@@ -102,12 +102,12 @@ public class Transceiver
      * Gets last message from
      * specified program.
      *
-     * @param originName is the origin and
+     * @param originID is the origin and
      *               message from program.
      */
-    public static String getLastMessage(String originName)
+    public static String getLastMessage(String originID)
     {
-        return Objects.requireNonNull(PluginManager.getPlugin(originName)).lastReceivedMessage;
+        return Objects.requireNonNull(PluginManager.getPluginByID(originID)).lastReceivedMessage;
     }
 
 }

@@ -2,6 +2,7 @@ package com.mark.core.init;
 
 import com.mark.core.plugins.Plugin;
 import com.mark.core.plugins.PluginManager;
+import com.mark.core.utils.FileLoader;
 import com.mark.core.utils.Registry;
 import com.mark.core.utils.VersionInfo;
 
@@ -9,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -32,8 +34,7 @@ public class PluginRegistry implements Registry
      * Registers each plugin and implements it into Mark Core
      */
     @Override
-    public void preInit()
-    {
+    public void preInit() throws IOException {
         // Checks existence of plugins folder
         System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: attempting to scan plugins directory for plugins. This includes checking the existence of the directory 'plugins'.");
 
@@ -67,6 +68,11 @@ public class PluginRegistry implements Registry
             File messenger = null;
             File receiver = null;
 
+            // INFO //
+            String name = null;
+            String id = null;
+            String version = null;
+
             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: looking for children of plugin [" + rootDir.getName() + "], including the jarFile, messenger, and receiver.");
             for (File child : Objects.requireNonNull(rootDir.listFiles()))
             {
@@ -90,6 +96,16 @@ public class PluginRegistry implements Registry
                             receiver = transceiver;
                             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found receiver for plugin [" + rootDir.getName() + "].");
                         }
+                        else if (transceiver.getName().equals("info.txt"))
+                        {
+                            ArrayList<String> info = FileLoader.readAllLinesFromFile(transceiver.getPath());
+
+                            name = info.get(0);
+                            id = info.get(1);
+                            version = info.get(2);
+
+                            System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found info for plugin [" + rootDir.getName() + "].");
+                        }
                     }
                     System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found all children for libs for plugin [" + rootDir.getName() + "].");
                 }
@@ -102,7 +118,7 @@ public class PluginRegistry implements Registry
             else if (receiver == null)
                 System.out.println("[Core] plugin registry/WARN [com.mark.core.init]: could not find receiver file for plugin [" + rootDir.getName() + "].");
 
-            curPlugin = new Plugin(rootDir, jarFile, messenger, receiver, null);
+            curPlugin = new Plugin(rootDir, jarFile, messenger, receiver, null, name, id, version);
 
             PluginManager.allPlugins.add(curPlugin);
             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: successfully registered [" + curPlugin.getJarFile().getName() + "]");

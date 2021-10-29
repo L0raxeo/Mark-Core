@@ -5,6 +5,7 @@ import com.mark.core.utils.VersionInfo;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Manages all plugins not including initialization and registry.
@@ -35,11 +36,22 @@ public class PluginManager
      * @param name of plugin.
      * @return plugin with associated name.
      */
-    public static Plugin getPlugin(String name)
+    public static Plugin getPluginByName(String name)
     {
         for (Plugin plugin : allPlugins)
         {
-            if (plugin.getRootDir().getName().equals(name))
+            if (Objects.equals(plugin.NAME, name))
+                return plugin;
+        }
+
+        return null;
+    }
+
+    public static Plugin getPluginByID(String ID)
+    {
+        for (Plugin plugin : allPlugins)
+        {
+            if (Objects.equals(plugin.ID, ID))
                 return plugin;
         }
 
