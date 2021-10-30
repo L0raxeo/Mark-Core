@@ -64,6 +64,7 @@ public class PluginRegistry implements Registry
 
             Plugin curPlugin;
 
+            // DIRS //
             File jarFile = null;
             File messenger = null;
             File receiver = null;
@@ -107,6 +108,7 @@ public class PluginRegistry implements Registry
                             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found info for plugin [" + rootDir.getName() + "].");
                         }
                     }
+
                     System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: found all children for libs for plugin [" + rootDir.getName() + "].");
                 }
             }
@@ -121,6 +123,7 @@ public class PluginRegistry implements Registry
             curPlugin = new Plugin(rootDir, jarFile, messenger, receiver, null, name, id, version);
 
             PluginManager.allPlugins.add(curPlugin);
+
             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: successfully registered [" + curPlugin.getJarFile().getName() + "]");
         }
     }

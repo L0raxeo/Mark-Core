@@ -19,13 +19,13 @@ import java.util.ArrayList;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/24/2021",
+        releaseDate = "10/29/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
         }
 )
-public class MarkCore
+public class CoreEngine
 {
 
     private final ArrayList<Registry> registries = new ArrayList<>();
@@ -63,6 +63,7 @@ public class MarkCore
         System.out.println("[Core] waking M.A.R.K. Core...");
         System.out.println("===============================================================================");
         System.out.println("[Mark] Modular, Assistant, Registry, Kernel - M.A.R.K. is awake and listening");
+
         InputHandler.listen();
     }
 

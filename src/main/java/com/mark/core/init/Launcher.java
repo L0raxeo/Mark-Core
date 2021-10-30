@@ -1,6 +1,6 @@
 package com.mark.core.init;
 
-import com.mark.core.MarkCore;
+import com.mark.core.CoreEngine;
 import com.mark.core.utils.VersionInfo;
 
 /**
@@ -21,7 +21,7 @@ public class Launcher
 
     public static void main(String[] args)
     {
-        MarkCore core = new MarkCore();
+        CoreEngine core = new CoreEngine();
         core.wake();
     }
 
