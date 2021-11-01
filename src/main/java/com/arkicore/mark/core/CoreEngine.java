@@ -28,6 +28,14 @@ import java.util.ArrayList;
 public class CoreEngine
 {
 
+    /**
+     * Message for shutdown - in case there is an error.
+     */
+    public static String shutdownMessage = null;
+
+    /**
+     * All registries within program.
+     */
     private final ArrayList<Registry> registries = new ArrayList<>();
 
     /**
@@ -140,7 +148,15 @@ public class CoreEngine
      */
     private void onTerminate()
     {
-        System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.\n[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
+        System.out.println("===============================================================================");
+
+        if (shutdownMessage != null)
+        {
+            System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.");
+            System.out.println("[Core] shutDownHook/ERROR [com.mark.core]: FATAL ERROR - " + shutdownMessage);
+        }
+
+        System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
 
         for (Plugin plugin : PluginManager.allPlugins)
         {

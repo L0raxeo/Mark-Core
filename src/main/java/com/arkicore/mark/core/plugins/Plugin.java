@@ -1,8 +1,10 @@
 package com.arkicore.mark.core.plugins;
 
+import com.arkicore.mark.core.utils.FileLoader;
 import com.arkicore.mark.core.utils.VersionInfo;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * The plugin object holds the information
@@ -24,6 +26,20 @@ public class Plugin
 
     /**
      * Default files, including directories.
+     *
+     * rootDir: root directory - directory/folder
+     * that contains all contents of the plugin.
+     *
+     * jarFile: jar file - the jar file that is
+     * executed, when the plugin is initialized.
+     *
+     * messenger: messenger - the container that
+     * holds the last message sent by the plugin.
+     *
+     * receiver: inbox - the container/mailbox
+     * of the associated plugin; contains the
+     * last message sent to the associated
+     * plugin.
      */
     private final File rootDir, jarFile, messenger, receiver;
     /**
@@ -55,7 +71,7 @@ public class Plugin
      * @param process of the program, that can be
      *                modified.
      */
-    public Plugin(File rootDir, File jarFile, File messenger, File receiver, Process process, String name, String ID, String version)
+    public Plugin(File rootDir, File jarFile, File messenger, File receiver, Process process, String name, String id, String version)
     {
         this.rootDir = rootDir;
         this.jarFile = jarFile;
@@ -65,8 +81,56 @@ public class Plugin
 
         // INFO //
         this.NAME = name;
-        this.ID = ID;
+        this.ID = id;
         this.VERSION = version;
+    }
+
+    // Transceiver
+
+    /**
+     * Queues message to associated plugin.
+     *
+     * @param data or the message being sent.
+     */
+    public void queueMessage(String data)
+    {
+        try
+        {
+            FileLoader.writeFile(this.receiver.getPath(), data);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @return all content within the messenger
+     * of the associated plugin.
+     */
+    public String readMessage()
+    {
+        try
+        {
+            lastReceivedMessage = FileLoader.readFile(this.messenger);
+
+            return lastReceivedMessage;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * @return the last message of the associated
+     * plugin, read by this program.
+     */
+    public String getLastReadMessage()
+    {
+        return lastReceivedMessage;
     }
 
     // Getters

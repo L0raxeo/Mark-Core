@@ -1,5 +1,7 @@
 package com.arkicore.mark.core.init;
 
+import com.arkicore.mark.core.CoreEngine;
+import com.arkicore.mark.core.comms.Transceiver;
 import com.arkicore.mark.core.plugins.Plugin;
 import com.arkicore.mark.core.plugins.PluginManager;
 import com.arkicore.mark.core.utils.FileLoader;
@@ -122,9 +124,11 @@ public class PluginRegistry implements Registry
 
             curPlugin = new Plugin(rootDir, jarFile, messenger, receiver, null, name, id, version);
 
+            System.out.println("[Core] plugin summary/INFO [com.mark.core.init]: plugin info summary - name: " + curPlugin.NAME + ", id: " + curPlugin.ID + ", version:" + curPlugin.VERSION);
+
             PluginManager.allPlugins.add(curPlugin);
 
-            System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: successfully registered [" + rootDir.getName() + "]");
+            System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: successfully registered [" + curPlugin.ID + "]");
         }
     }
 
@@ -138,7 +142,7 @@ public class PluginRegistry implements Registry
         // Iterates through all registered plugins
         for (Plugin plugin : PluginManager.allPlugins)
         {
-            System.out.println("[Core] plugin init/INFO [com.mark.core.init]: attempting to build [" + plugin.getJarFile().getName() + "]");
+            System.out.println("[Core] plugin init/INFO [com.mark.core.init]: attempting to build [" + plugin.ID + "]");
             // Process builder buffers each process by building each step, and once that process is determined, it is executed
             // 3 args: java -jar currentPlugin.jar
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", plugin.getJarFile().getName());
@@ -148,8 +152,50 @@ public class PluginRegistry implements Registry
             // Indexes process with plugin in case alterations such as "exiting" is necessary
             plugin.process = processBuilder.start();
 
-            System.out.println("[Core] plugin init/INFO [com.mark.core.init]: successfully built [" + plugin.getJarFile().getName() + "]");
+            System.out.println("[Core] plugin init/INFO [com.mark.core.init]: successfully built [" + plugin.ID + "]");
         }
+    }
+
+    @Override
+    public void postInit()
+    {
+        System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: attempting to ping all plugins");
+
+        for (Plugin plugin : PluginManager.allPlugins)
+        {
+            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: pinging plugin [" + plugin.ID + "]");
+
+            // [.d/ping_for_pluginIdentification]
+            // The plugin will check to see if the message received is "[.d/ping_for_ + Reference.ID]"
+            plugin.queueMessage("[.d/ping_for_" + plugin.ID + "]");
+
+            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully sent ping without errors to plugin [" + plugin.ID + "]");
+
+            boolean receivedConfirmingPing = false;
+
+            long now;
+            long lastTime = System.nanoTime();
+            long timer = 0;
+
+            while (!receivedConfirmingPing)
+            {
+                now = System.nanoTime();
+                timer += now - lastTime;
+                lastTime = now;
+
+                if (plugin.readMessage().equals("[.d/ping_received_for_" + plugin.ID + "]"))
+                    receivedConfirmingPing = true;
+                else if (timer >= 2147483647)
+                {
+                    CoreEngine.shutdownMessage = "COULD NOT RECEIVE PING AND REGISTER PLUGIN [" + plugin.ID + "]";
+                    System.exit(-1);
+                }
+            }
+
+            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged plugin [" + plugin.NAME + "]");
+        }
+
+        System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged all plugins!");
     }
 
 }
