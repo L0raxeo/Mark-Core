@@ -36,7 +36,8 @@ public class PluginRegistry implements Registry
      * Registers each plugin and implements it into Mark Core
      */
     @Override
-    public void preInit() throws IOException {
+    public void preInit() throws IOException
+    {
         // Checks existence of plugins folder
         System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: attempting to scan plugins directory for plugins. This includes checking the existence of the directory 'plugins'.");
 
