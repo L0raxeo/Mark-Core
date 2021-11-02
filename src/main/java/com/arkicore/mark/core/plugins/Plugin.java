@@ -120,10 +120,10 @@ public class Plugin
      *
      * @param data or the message being sent.
      */
-    public void queueMessage(String data)
-    {
-        queuedMessages.add(data);
-        queuedMessages.remove(0);
+    public void queueMessage(String data) throws IOException {
+        FileLoader.writeFile(this.receiver.getPath(), data);
+        //queuedMessages.add(data);
+        //queuedMessages.remove(0);
     }
 
     /**
@@ -131,6 +131,7 @@ public class Plugin
      * is running, and while it can find the
      * appropriate inbox file.
      */
+    /*
     public void sendMessages() throws IOException
     {
         while (Files.exists(messenger.getAbsoluteFile().toPath()) && process.isAlive())
@@ -152,6 +153,7 @@ public class Plugin
             }
         }
     }
+     */
 
     /**
      * @return all content within the messenger

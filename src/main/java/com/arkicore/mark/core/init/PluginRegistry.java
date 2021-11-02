@@ -177,7 +177,7 @@ public class PluginRegistry implements Registry
 
         for (Plugin plugin : PluginManager.allPlugins)
         {
-            plugin.sendMessages();
+            //plugin.sendMessages();
             System.out.println("[Core]: " + plugin.ID + "/INFO [com.arkicore.mark.core.plugins]: plugin " + plugin.ID + " is listening");
 
             System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: pinging plugin [" + plugin.ID + "]");
