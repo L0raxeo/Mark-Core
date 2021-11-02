@@ -1,3 +1,0 @@
-Display Demo
-displayDemo
-0.0

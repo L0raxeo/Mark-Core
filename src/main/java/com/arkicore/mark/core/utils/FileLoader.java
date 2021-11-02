@@ -76,4 +76,26 @@ public class FileLoader
         bw.close();
     }
 
+    /**
+     *
+     * Writes a file associated with a path parameter.
+     *
+     * @param path to file being modified
+     * @param dataPerLine unbound array of data per line
+     * @throws IOException if there is an "in" exception
+     */
+    public static void writeFile(String path, String... dataPerLine) throws IOException
+    {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+
+        for (String data : dataPerLine)
+        {
+            bw.write(data);
+            bw.newLine();
+        }
+
+        bw.flush();
+        bw.close();
+    }
+
 }

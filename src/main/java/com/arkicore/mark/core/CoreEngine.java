@@ -160,9 +160,9 @@ public class CoreEngine
 
         for (Plugin plugin : PluginManager.allPlugins)
         {
-            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + plugin.getJarFile().getName() + "]");
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to terminate plugin [" + plugin.ID + "]");
             plugin.process().destroy();
-            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated plugin [" + plugin.getJarFile().getName() + "]");
+            System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated plugin [" + plugin.ID + "]");
         }
 
         System.out.println("[Core] shutdownHook/INFO [com.mark.core]: successfully terminated all programs, including plugins.");

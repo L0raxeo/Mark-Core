@@ -57,6 +57,20 @@ public class PluginRegistry implements Registry
         else
             System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: plugins directory already exists. skipping lines...");
 
+        if (!Files.exists(Paths.get("stacktrace")))
+        {
+            System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: stacktrace directory does not exist. creating new one...");
+
+            boolean wasSuccessful = new File("stacktrace").mkdirs();
+
+            if (wasSuccessful)
+            {
+                System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: successfully created stacktrace directory!");
+            }
+        }
+        else
+            System.out.println("[Core] plugin registry/INFO [com.mark.core.init]: stacktrace directory already exists. skipping lines...");
+
         // Registers plugins
         File[] files = new File("plugins").listFiles();
 
@@ -184,9 +198,13 @@ public class PluginRegistry implements Registry
                 timer += now - lastTime;
                 lastTime = now;
 
-                if (plugin.readMessage().equals("[.d/ping_received_for_" + plugin.ID + "]"))
+                if (plugin.readMessage() != null && plugin.readMessage().equals("[.d/ping_received_for_" + plugin.ID + "]"))
+                {
+                    plugin.queueMessage("");
+
                     receivedConfirmingPing = true;
-                else if (timer >= 2147483647)
+                }
+                else if (timer >= 11474836474L)
                 {
                     CoreEngine.shutdownMessage = "COULD NOT RECEIVE PING AND REGISTER PLUGIN [" + plugin.ID + "]";
                     System.exit(-1);
@@ -194,9 +212,6 @@ public class PluginRegistry implements Registry
             }
 
             System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged plugin [" + plugin.ID + "]");
-
-            plugin.sendMessages();
-            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: Core is now listening for incoming messages from [" + plugin.ID + "]");
         }
 
         System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged all plugins!");

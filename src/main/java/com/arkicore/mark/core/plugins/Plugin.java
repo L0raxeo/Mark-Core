@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * The plugin object holds the information
@@ -61,7 +63,7 @@ public class Plugin
      * Messages that have not been
      * sent.
      */
-    public ArrayList<String> queuedMessages = new ArrayList<>();
+    public List<String> queuedMessages = new ArrayList<>();
 
     /**
      * Last message to have been read
@@ -119,9 +121,12 @@ public class Plugin
      *
      * @param data or the message being sent.
      */
-    public void queueMessage(String data)
+    public void queueMessage(String data) throws IOException
     {
-        queuedMessages.add(data);
+        //queuedMessages.add(data);
+
+        FileLoader.writeFile(this.getReceiver().getPath(), data);
+        //queuedMessages.remove(0);
     }
 
     /**
@@ -133,15 +138,21 @@ public class Plugin
     {
         while (Files.exists(messenger.getAbsoluteFile().toPath()) && process.isAlive())
         {
-            if (!hasReadMessage)
-            {
+            if (!hasReadMessage) {
                 if (FileLoader.readFile(receiver) == null)
                     hasReadMessage = true;
             }
 
-            FileLoader.writeFile(this.receiver.getPath(), queuedMessages.get(0));
-            queuedMessages.remove(0);
-            hasReadMessage = false;
+            try
+            {
+                FileLoader.writeFile(this.receiver.getPath(), queuedMessages.get(0));
+                queuedMessages.remove(0);
+                hasReadMessage = false;
+            }
+            catch (IndexOutOfBoundsException e)
+            {
+                return;
+            }
         }
     }
 
