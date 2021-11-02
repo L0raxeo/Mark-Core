@@ -5,6 +5,8 @@ import com.arkicore.mark.core.utils.VersionInfo;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
 
 /**
  * The plugin object holds the information
@@ -48,16 +50,41 @@ public class Plugin
      */
     public Process process;
 
+    // INFO //
+    public final String NAME;
+    public final String ID;
+    public final String VERSION;
+
+    // MESSAGES //
+
+    /**
+     * Messages that have not been
+     * sent.
+     */
+    public ArrayList<String> queuedMessages = new ArrayList<>();
+
     /**
      * Last message to have been read
      * from this program.
      */
     public String lastReceivedMessage;
 
-    // INFO //
-    public final String NAME;
-    public final String ID;
-    public final String VERSION;
+    /**
+     * Indicates if the plugin has
+     * read previous message from
+     * core.
+     *
+     * Prevents queued messages from
+     * sending, before the plugin has
+     * read previously sent ones.
+     *
+     * If the inbox of the plugin is
+     * empty, that means that the message
+     * has either been read, or there
+     * are no prior messages sent.
+     */
+    public boolean hasReadMessage = false;
+
 
     /**
      * @param rootDir root directory of plugin
@@ -94,13 +121,27 @@ public class Plugin
      */
     public void queueMessage(String data)
     {
-        try
+        queuedMessages.add(data);
+    }
+
+    /**
+     * Sends queued messages while the program
+     * is running, and while it can find the
+     * appropriate inbox file.
+     */
+    public void sendMessages() throws IOException
+    {
+        while (Files.exists(messenger.getAbsoluteFile().toPath()) && process.isAlive())
         {
-            FileLoader.writeFile(this.receiver.getPath(), data);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
+            if (!hasReadMessage)
+            {
+                if (FileLoader.readFile(receiver) == null)
+                    hasReadMessage = true;
+            }
+
+            FileLoader.writeFile(this.receiver.getPath(), queuedMessages.get(0));
+            queuedMessages.remove(0);
+            hasReadMessage = false;
         }
     }
 
@@ -113,6 +154,7 @@ public class Plugin
         try
         {
             lastReceivedMessage = FileLoader.readFile(this.messenger);
+            FileLoader.writeFile(this.messenger.getPath(), "");
 
             return lastReceivedMessage;
         }

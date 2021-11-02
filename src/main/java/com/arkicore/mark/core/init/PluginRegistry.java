@@ -158,7 +158,7 @@ public class PluginRegistry implements Registry
     }
 
     @Override
-    public void postInit()
+    public void postInit() throws IOException
     {
         System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: attempting to ping all plugins");
 
@@ -193,7 +193,10 @@ public class PluginRegistry implements Registry
                 }
             }
 
-            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged plugin [" + plugin.NAME + "]");
+            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged plugin [" + plugin.ID + "]");
+
+            plugin.sendMessages();
+            System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: Core is now listening for incoming messages from [" + plugin.ID + "]");
         }
 
         System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: successfully pinged all plugins!");
