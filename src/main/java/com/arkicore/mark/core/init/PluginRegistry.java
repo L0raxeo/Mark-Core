@@ -22,7 +22,7 @@ import java.util.Objects;
  */
 @VersionInfo(
         version = "2.0",
-        releaseDate = "10/29/2021",
+        releaseDate = "11/2/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"

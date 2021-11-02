@@ -3,6 +3,7 @@ package com.arkicore.mark.core;
 import com.arkicore.mark.core.init.*;
 import com.arkicore.mark.core.plugins.Plugin;
 import com.arkicore.mark.core.plugins.PluginManager;
+import com.arkicore.mark.core.utils.FileLoader;
 import com.arkicore.mark.core.utils.VersionInfo;
 import com.arkicore.mark.core.input.InputHandler;
 import com.arkicore.mark.core.utils.Registry;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 @VersionInfo(
         version = "1.0",
-        releaseDate = "10/29/2021",
+        releaseDate = "11/2/2021",
         since = "1.0",
         contributors = {
                 "Lorcan Andrew Cheng"
@@ -154,6 +155,15 @@ public class CoreEngine
         {
             System.out.println("[Core] shutDownHook/WARN [com.mark.core]: Mark-Core abruptly terminated. This could be a problem.");
             System.out.println("[Core] shutDownHook/ERROR [com.mark.core]: FATAL ERROR - " + shutdownMessage);
+
+            try
+            {
+                FileLoader.writeFile("stacktrace/ErrorMessage[" + System.currentTimeMillis() + "].txt", shutdownMessage);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
 
         System.out.println("[Core] shutdownHook/INFO [com.mark.core]: attempting to shut down...");
