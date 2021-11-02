@@ -1,7 +1,6 @@
 package com.arkicore.mark.core.init;
 
 import com.arkicore.mark.core.CoreEngine;
-import com.arkicore.mark.core.comms.Transceiver;
 import com.arkicore.mark.core.plugins.Plugin;
 import com.arkicore.mark.core.plugins.PluginManager;
 import com.arkicore.mark.core.utils.FileLoader;
@@ -178,6 +177,9 @@ public class PluginRegistry implements Registry
 
         for (Plugin plugin : PluginManager.allPlugins)
         {
+            plugin.sendMessages();
+            System.out.println("[Core]: " + plugin.ID + "/INFO [com.arkicore.mark.core.plugins]: plugin " + plugin.ID + " is listening");
+
             System.out.println("[Core] plugin post-init/INFO [com.mark.core.init]: pinging plugin [" + plugin.ID + "]");
 
             // [.d/ping_for_pluginIdentification]
@@ -200,8 +202,6 @@ public class PluginRegistry implements Registry
 
                 if (plugin.readMessage() != null && plugin.readMessage().equals("[.d/ping_received_for_" + plugin.ID + "]"))
                 {
-                    plugin.queueMessage("");
-
                     receivedConfirmingPing = true;
                 }
                 else if (timer >= 11474836474L)

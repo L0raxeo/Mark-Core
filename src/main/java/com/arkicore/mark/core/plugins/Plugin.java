@@ -121,12 +121,10 @@ public class Plugin
      *
      * @param data or the message being sent.
      */
-    public void queueMessage(String data) throws IOException
+    public void queueMessage(String data)
     {
-        //queuedMessages.add(data);
-
-        FileLoader.writeFile(this.getReceiver().getPath(), data);
-        //queuedMessages.remove(0);
+        queuedMessages.add(data);
+        queuedMessages.remove(0);
     }
 
     /**
@@ -165,7 +163,6 @@ public class Plugin
         try
         {
             lastReceivedMessage = FileLoader.readFile(this.messenger);
-            FileLoader.writeFile(this.messenger.getPath(), "");
 
             return lastReceivedMessage;
         }
