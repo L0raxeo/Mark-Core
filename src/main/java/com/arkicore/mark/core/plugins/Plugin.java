@@ -164,6 +164,7 @@ public class Plugin
         try
         {
             lastReceivedMessage = FileLoader.readFile(this.messenger);
+            FileLoader.writeFile(this.messenger.getPath(), "");
 
             return lastReceivedMessage;
         }

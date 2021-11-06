@@ -1,10 +1,13 @@
 package com.arkicore.mark.core.input;
 
 import com.arkicore.mark.core.input.inputHierarchy.nuclei.NucleusManager;
+import com.arkicore.mark.core.plugins.Plugin;
+import com.arkicore.mark.core.plugins.PluginManager;
 import com.arkicore.mark.core.utils.Utils;
 import com.arkicore.mark.core.utils.VersionInfo;
 import com.arkicore.mark.core.debug.DebugManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -39,7 +42,7 @@ public class InputHandler
      * Making a separate method dedicated to listening, instead of integrating it with the input handling method, is to
      * give allow the changing of the input system, without changing the input handling system.
      */
-    public static void listen()
+    public static void listen() throws IOException
     {
         handleInput(scanner.nextLine());
     }
@@ -49,7 +52,7 @@ public class InputHandler
      *
      * @param rawInput is the user input.
      */
-    private static void handleInput(String rawInput)
+    private static void handleInput(String rawInput) throws IOException
     {
         // Used to make sure input isn't empty
         char[] splitInput = Utils.getStringAsCharArray(rawInput);
@@ -68,7 +71,21 @@ public class InputHandler
         }
         else
         {
-            NucleusManager.triggerNucleus(rawInput);
+            boolean isPluginResponse = false;
+
+            for (Plugin plugin : PluginManager.allPlugins)
+            {
+                plugin.queueMessage(rawInput);
+            }
+
+            for (Plugin plugin : PluginManager.allPlugins)
+            {
+                if (plugin.readMessage() != null || plugin.readMessage().equals(""))
+                    isPluginResponse = true;
+            }
+
+            if (!isPluginResponse)
+                NucleusManager.triggerNucleus(rawInput);
         }
 
         listen();

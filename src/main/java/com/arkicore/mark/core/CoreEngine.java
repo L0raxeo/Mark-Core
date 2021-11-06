@@ -73,7 +73,14 @@ public class CoreEngine
         System.out.println("===============================================================================");
         System.out.println("[Mark] Modular, Assistant, Registry, Kernel - M.A.R.K. is awake and listening");
 
-        InputHandler.listen();
+        try
+        {
+            InputHandler.listen();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
