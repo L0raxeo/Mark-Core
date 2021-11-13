@@ -1,1 +1,0 @@
-[.d/ping_received_for_samplePlugin]
